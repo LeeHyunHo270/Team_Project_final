@@ -1227,3 +1227,5 @@ buttonSetting3.setOnClickListener(new View.OnClickListener() {
 </pre></code>
 
 # 3. 동작영상
+
+(동작영상 : https://www.youtube.com/watch?v=i3PL5pLVu38)
