@@ -27,7 +27,7 @@
 ### 2-7 환경설정<br>
 + 소개<br>
 + 환경설정 구성<br>
-## 3. 동작영상
+### 3. 동작영상
   
 # 1. 앱 소개<br>
 ## 1-1 주제 선정이유<br>
@@ -830,6 +830,10 @@ UserInfo 액티비티의 리스트뷰 내부 아이템들은 해당 국가에 �
         alertDialog.show();
     }
   </code></pre><br><br>
+  ### 구현 영상
+  아래 링크는 팀원들과 동영상을 병합하는 과정에서 제 구현 영상의 핸드폰으로 녹화한 영상이라 길이에 비해 용량이 너무커 별도로 올린 구현영상입니다.<br>
+  시청해주시면 감사하겠습니다.<br>
+  https://www.youtube.com/watch?v=FqLL_IXIqI8&feature=youtu.be
   
 
 
@@ -1202,5 +1206,3 @@ buttonSetting3.setOnClickListener(new View.OnClickListener() {
 </pre></code>
 
 # 3. 동작영상
-#### 위에 코드 작성한 것에 대한 이해를 돕기 위해 ppt와 구현 화면을 함께 넣어서 동작영상을 만들었습니다.
-(동작영상 : )
