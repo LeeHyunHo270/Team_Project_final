@@ -507,7 +507,6 @@ toMap 함수는 Realtime Database에 값을 저장하기 위해 HashMap 형식�
    
 앱을 실행하여 회원가입을 해보면 image와 senderName값은 널값이므로 들어가지 않고 나머지 부분을 잘 저장된 것을 확인할 수 있습니다.<br>
 <img src="https://user-images.githubusercontent.com/79952145/121284733-48a36d00-c918-11eb-98b1-0755e825b56a.png"><br>
-이미지 전송도 마찬가지로 FirebasePost 파일의 toMap 함수를 이용하여 정보를 데이터베이스에 저장합니다.<br>
 
 + 데이터 불러오기<br>
 
@@ -671,6 +670,43 @@ public static String BitmapToString(Bitmap bitmap) {
 </pre></code>
 
 + 이미지값 데이터 베이스에 저장<br>
+
+<pre><code>
+public void showMessage(){
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("사진 교환");
+        builder.setMessage( receiverName + "님께 사진을 전송하시겠습니까?" );
+        builder.setIcon(R.drawable.adialog);
+</pre></code>
+
+리스트뷰에서 사진을 전송할 대상을 선택하고 위의 코드로 작성된 알림창이 뜨게 됩니다.<br>
+
+<pre><code>
+builder.setPositiveButton("예", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Map<String, Object> childUpdates=new HashMap<>();
+                Map<String, Object> postValues=null;
+                CameraActivity ca = new CameraActivity();
+                String StringImage=ca.getoriginalBm();
+
+                Register rg = new Register();
+                senderName = rg.getSenderName();
+
+                com.androidapp.youjigom.FirebasePost post=
+                        new com.androidapp.youjigom.FirebasePost
+                                (StringImage, receiverName, receiverCountry, senderName);
+                postValues=post.toMap();
+
+                childUpdates.put("users/" + receiverName, postValues);
+                databaseReference.updateChildren(childUpdates);
+            }
+        });
+        </pre></code>
+        
+이미지 전송도 회원가입시 사용자 정보를 저장할 때처럼 FirebasePost 파일의 toMap 함수를 이용합니다.<br>
+
 <b>jiminjimin</b> 이라는 사용자로 로그인하고 <b>jjj</b>라는 사용자에게 사진을 보내면 데이터베이스에 다음과 같이 저장됨을 확인할 수 있습니다.<br>
 <img src="https://user-images.githubusercontent.com/79952145/121299077-d3439680-c92f-11eb-9465-0faaa6930fbb.png"><br>
 이미지는 받는 사람의 정보 안에 보내는 사람의 이름과 함께 추가로 저장됩니다.<br>
