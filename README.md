@@ -3,6 +3,7 @@
 + 주제 선정이유<br>
 + 주요 기능<br> 
 + 차별점<br>
++ 기타<br>
 ## 2. 기능구현
 ### 2-1 파이어베이스<br>
 + 소개<br>
@@ -1228,5 +1229,5 @@ buttonSetting3.setOnClickListener(new View.OnClickListener() {
 
 # 3. 동작영상
 
-#### ppt와 구현영상을 이용해서 좀 더 쉽게 이해할 수 있는 동작영상을 만들었습니다.
+#### ppt와 구동 화면을 이용해서 좀 더 쉽게 이해할 수 있는 동작영상을 만들었습니다.
 (동작영상 : https://www.youtube.com/watch?v=i3PL5pLVu38)
