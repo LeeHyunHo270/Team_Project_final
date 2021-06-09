@@ -904,7 +904,7 @@ SettingActivity.java, activity_setting.xml을 만듭니다. activity_setting.xml
     </ScrollView>
 
 </LinearLayout>
-</pre></code>
+</code></pre>
 
 
 # 3. 동작영상<br>
