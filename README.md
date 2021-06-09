@@ -511,6 +511,10 @@ toMap 함수는 Realtime Database에 값을 저장하기 위해 HashMap 형식�
 2. 이미지 전송시, 이미지를 스트링 값으로 변환하여 저장<br>
 이미지 전송도 마찬가지로 FirebasePost 파일의 toMap 함수를 이용하여 정보를 데이터베이스에 저장합니다.<br>
 jiminjimin 이라는 사용자로 로그인하고 jjj라는 사용자에게 사진을 보내면 데이터베이스에 다음과 같이 저장됨을 확인할 수 있습니다.<br>
+<img src="https://user-images.githubusercontent.com/79952145/121299077-d3439680-c92f-11eb-9465-0faaa6930fbb.png">
+
+이미지는 받는 사람의 정보 안에 보내는 사람의 이름과 함께 추가로 저장됩니다.<br>
+
 + 데이터 불러오기<br>
 
 ## 2-3 구글맵<br>
