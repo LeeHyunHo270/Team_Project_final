@@ -1,6 +1,7 @@
 # 목차
 ## 1. 앱 소개<br>
-+ 주제 선정이유<br> 
++ 주제 선정이유<br>
++ 주요 기능<br> 
 + 차별점<br>
 ## 2. 기능구현
 ### 2-1 파이어베이스<br>
@@ -464,7 +465,7 @@ public void logout(View view) {
     
 
 
-## 2-2 리얼타임 데이터베이
+## 2-2 리얼타임 데이터베이스
 ### (1) 소개<br>
 <img src="https://user-images.githubusercontent.com/79952145/121284977-961fda00-c918-11eb-9c80-2c9bc1e5b664.png" align="left" height="300">
 Realtime Database는 Firebase에서 제공하는 실시간 데이터베이스로 데이터 저장 및 동기화가 실시간으로 가능한 데이터베이스입니다. <br><br>
