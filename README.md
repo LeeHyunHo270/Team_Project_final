@@ -827,6 +827,84 @@ TextView에는 위에서 user 변수안에 저장해두었던 보낸 사람 이�
 <img src="https://user-images.githubusercontent.com/79952145/121306240-8cf33500-c939-11eb-9888-f3a0efa9d6b8.png" height="200"><br>
 
 ## 2-7 환경설정<br>
+### (1) 소개<br>
+환경설정은 언어 설정, 소리 설정, 알림 설정의 3가지 버튼으로 이루어져 있으며, 각각의 버튼 클릭시 핸드폰에 내재되어있는 시스템 설정으로 들어가게 해줍니다. 시스템 설정에서 언어, 소리, 알림 기능을 수정할 수 있습니다.<br>
+### (2) 환경설정 구성<br>
+SettingActivity.java, activity_setting.xml을 만듭니다. activity_setting.xml 파일에 환경설정 화면을 만들기 위한 코드를 입력합니다.
+
+<pre><code>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/setting_btn"
+                android:fontFamily="@font/cookierunblack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_background"
+                android:gravity="center_vertical"
+                android:paddingLeft="8dp"
+                android:text="언어 설정"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="0.7dp"
+                android:layout_centerInParent="true"
+                android:background="#BBBBBB" />
+
+            <Button
+                android:id="@+id/setting2_btn"
+                android:layout_width="match_parent"
+                android:fontFamily="@font/cookierunblack"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_background"
+                android:gravity="center_vertical"
+                android:paddingLeft="8dp"
+                android:text="소리 설정"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.7dp"
+                android:layout_centerInParent="true"
+                android:background="#BBBBBB" />
+
+            <Button
+                android:id="@+id/setting3_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_background"
+                android:gravity="center_vertical"
+                android:paddingLeft="8dp"
+                android:fontFamily="@font/cookierunblack"
+                android:text="알림 설정"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.7dp"
+                android:layout_centerInParent="true"
+                android:background="#BBBBBB" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
+</pre></code>
 
 
 # 3. 동작영상<br>
