@@ -831,7 +831,7 @@ TextView에는 위에서 user 변수안에 저장해두었던 보낸 사람 이�
 환경설정은 언어 설정, 소리 설정, 알림 설정의 3가지 버튼으로 이루어져 있으며, 각각의 버튼 클릭시 핸드폰에 내재되어있는 시스템 설정으로 들어가게 해줍니다. 시스템 설정에서 언어, 소리, 알림 기능을 수정할 수 있습니다.<br>
 ### (2) 환경설정 구성<br>
 + SettingActivity.java, activity_setting.xml을 만듭니다. activity_setting.xml 파일에 환경설정 화면과 맞는 코드를 알맞게 입력합니다.<br>
-+ SettingActivity.java 파일에 3가지 버튼을 인식시키고, activity_setting.xml과 연결합니다.
++ SettingActivity.java 파일에 다음과 같이 3가지 버튼을 인식시키고, activity_setting.xml과 연결합니다.
 <pre><code>
 public class Setting extends AppCompatActivity {
 
@@ -846,6 +846,41 @@ public class Setting extends AppCompatActivity {
         buttonSetting = (Button) findViewById(R.id.setting_btn);
         buttonSetting2 = (Button) findViewById(R.id.setting2_btn);
         buttonSetting3 = (Button) findViewById(R.id.setting3_btn);
+</pre></code>
+
+#### Intent
++ intent를 이용해서 각각의 버튼을 클릭했을 때, 시스템 설정으로 이동할 수 있게 코드를 입력합니다.
++ 소리 설정
+<pre><code>
+buttonSetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(android.provider.Settings.ACTION_LOCALE_SETTINGS);   // ACTION_LOCALE_SETTINGS은 시스템 설정에서 언어 설정을 뜻합니다.
+                startActivity(intent);
+            }
+        });
+</pre></code>
+
++ 언어 설정
+<pre><code>
+ buttonSetting2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(android.provider.Settings.ACTION_SOUND_SETTINGS);   // ACTION_SOUND_SETTINGS은 시스템 설정에서 소리 설정을 뜻합니다.
+                startActivity(intent);
+            }
+        });
+</pre></code>
+
++ 알림 설정
+<pre><code>
+buttonSetting3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(android.provider.Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS);   // ACTION_NOTIFICATION_LISTENER_SETTINGS은 시스템 설정에서 알림 설정을 뜻합니다.
+                startActivity(intent);
+            }
+        });
 </pre></code>
 
 
