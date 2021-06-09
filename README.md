@@ -29,8 +29,11 @@
 ## 3. 동작영상<br><br><br>
   
 # 1. 앱 소개<br>
-+ 주제 선정이유<br> 
-+ 차별점<br>
+## 1-1 주제 선정이유<br>
+<img width="733" alt="스모프 발표 사진" src="https://user-images.githubusercontent.com/79956770/121331013-76f16e80-c951-11eb-92f3-deebd9a82263.PNG">
+
+
+## 1-2 차별점<br>
 
 # 2. 기능구현<br>
 ## 2-1 파이어베이스<br>
