@@ -529,10 +529,12 @@ toMap 함수는 Realtime Database에 값을 저장하기 위해 HashMap 형식�
 앱을 실행하여 회원가입을 해보면 image와 senderName값은 널값이므로 들어가지 않고 나머지 부분을 잘 저장된 것을 확인할 수 있습니다.<br>
 <img src="https://user-images.githubusercontent.com/79952145/121284733-48a36d00-c918-11eb-98b1-0755e825b56a.png"><br>
 
-### (3) 데이터 불러오기<br>
-
 ## 2-3 구글맵<br>
 ### (1) 소개<br>
+<img width="300" src="https://user-images.githubusercontent.com/79949843/121337394-75c34000-c957-11eb-80d8-c24e6a759611.png"><img src="https://user-images.githubusercontent.com/79949843/121337659-bb800880-c957-11eb-9372-46229a914003.png"><br>
+저희 조는 구글맵을 이용하여 다양한 사용자들과의 접근을 쉽게하고, <br>
+리얼타임 데이터베이스를 이용하여 교환하는 이미지의 정보를 쉽게 전송, 저장 할 수있게 하였습니다.<br><br>
+아래 내용으로는 제가 구현한 기능들을 어떻게 구현했고, 처음보는 사람도 쉽게 따라할 수 있게 내용들을 기록하였습니다.<br><br>
 ### (2) 마커 찍기<br>
 ### (3) 마커 클릭<br>
 
