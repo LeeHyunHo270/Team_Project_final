@@ -529,14 +529,309 @@ toMap 함수는 Realtime Database에 값을 저장하기 위해 HashMap 형식�
 앱을 실행하여 회원가입을 해보면 image와 senderName값은 널값이므로 들어가지 않고 나머지 부분을 잘 저장된 것을 확인할 수 있습니다.<br>
 <img src="https://user-images.githubusercontent.com/79952145/121284733-48a36d00-c918-11eb-98b1-0755e825b56a.png"><br>
 
-## 2-3 구글맵<br>
-### (1) 소개<br>
+## 2-3 구글맵<br><br>
++ 소개<br><br>
 <img width="300" src="https://user-images.githubusercontent.com/79949843/121337394-75c34000-c957-11eb-80d8-c24e6a759611.png"><img src="https://user-images.githubusercontent.com/79949843/121337659-bb800880-c957-11eb-9372-46229a914003.png"><br>
 저희 조는 구글맵을 이용하여 다양한 사용자들과의 접근을 쉽게하고, <br>
 리얼타임 데이터베이스를 이용하여 교환하는 이미지의 정보를 쉽게 전송, 저장 할 수있게 하였습니다.<br><br>
 아래 내용으로는 제가 구현한 기능들을 어떻게 구현했고, 처음보는 사람도 쉽게 따라할 수 있게 내용들을 기록하였습니다.<br><br>
-### (2) 마커 찍기<br>
-### (3) 마커 클릭<br>
++ GoogleMap 구현<br><br>
+구글맵API를 실현하기 위한 프로젝트를 만들어줍니다.<br>
+프로젝트를 만들었으면 아래 사진과 같이 Google Map Activity를 생성해줍니다.<br>File->New->Google->Google Maps Activity<br>
+<img src = "https://user-images.githubusercontent.com/79949843/114507804-9bd9a600-9c6e-11eb-8e79-e3d8dafa6e6e.PNG" width="600px"><br><br>
+res -> value -> google_maps_api.xml url로 들어가 프로젝트 생성 후 API키값을 받아옵니다.<br>
+<img src = "https://user-images.githubusercontent.com/79949843/114509929-0b509500-9c71-11eb-904c-7420f44bb256.PNG"><br><br>
+키값을 받았으면 다시 안드로이드 스튜디오로 가서 res -> value -> google_maps_api.xml에 있는 "YOUR_KEY_HERE" 부분에 키값을 넣어줍니다.<br>
+<pre><code>
+
+    //생략...
+    
+    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=FA:32:8D:A5:DB:85:6A:1D:0F:62:5B:F2:75:B7:8A:29:55:9A:F5:7A%3Bcom.androidapp.tobeacontinue
+   
+   //생략...
+   
+    < string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">YOUR_KEY_HERE< /string>
+© 2020 GitHub, Inc.
+
+
+</code></pre>
+<br>
+키 값을 넣은 다음 Gradle Script->build.gradle(Module:프로젝트이름.app)에서 다음과 같은 코드를 추가해줍니다.<br>
+<pre><code>
+        dependencies {
+                implementation fileTree(dir: 'libs', include: ['*.jar'])
+                implementation 'androidx.appcompat:appcompat:1.2.0'
+                                     .
+                                     .
+                implementation 'com.google.android.gms:play-services-maps:17.0.0'
+                implementation 'com.google.android.gms:play-services-location:18.0.0'
+                                     .
+                                     .
+                                     .
+                }       
+</code></pre><br>
+다음으로는 AndroidManifast.xml에서 해당 코드를 추가해 준다. "API 키" 부분에는 아까 받아온 키값을 넣어줍니다.<br>
+<pre><code>
+
+  < meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="API 키"/>
+  
+
+</code></pre><br>
+위와 같은 내용을 실행한 뒤 MapsActivity onMapReady메소드 내부에 구글맵을 어떻게 구상할지 코드해 주었습니다.<br><br>
++ 마커 찍기<br><br>
+  (1) 다중 마커<br><br>
+  다중마커 구현입니다.<br>
+  다양한 나라의 사람들과 사진 교환을 목적으로 하기 때문에 다중 마커를 구현하였습니다.
+  저는 마커를 추가할 나라의 좌표값들을 Locations라는 자바파일에 이중 배열로 저장한 뒤 위도와 경도값을 한번에 가져와서 설정해 주었습니다.<br>
+  먼저 Locatinos 자바파일 내부 코드 입니다.<br>
+  <pre><code>
+  public class Locations {
+
+    final static double[][] LatLng = {
+        //위도와 경도값 이중 배열로 저장
+            {39.09843569786831, -77.03655778803672},//0
+            {51.5144591527327, -0.12975831845500382},//1
+            //생략..
+            {35.74306540022329, 139.77245318272045},//13
+            {37.557667, 126.926546}//14
+
+    };
+    
+    final static String[] countryName = {
+        //위 배열의 순서대로 국가의 이름 스트링값으로 저장
+            "미국",//0
+            "영국",//1
+            //생략..
+            "일본",//13
+            "대한민국"//14
+                 };
+        }
+  </code></pre>
+  MapsActivity에서 다음과 같은 코드로 다중 마커를 구현하였습니다<br>
+  <pre><code>
+  //Locations 클래스에서 좌표값을 가져오기 위하여 선언
+  static Locations locations = new Locations();
+    double[][] locationsdata = locations.LatLng;
+    //생략..
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+    
+        //for문을 이용한 다중마커 구현
+        for (int x = 0; x < 15; x++) {
+            // 이중 배열을 이용한 위도값 설정 
+            double lat = locationsdata[x][0];
+            // 이중 배열을 이용한 경도값 설정 
+            double lon = locationsdata[x][1];
+            LatLng latLng = new LatLng(lat, lon);
+            //LatLng latLng = new LatLng(37.557667, 126.926546);
+
+            // 카메라를 설정 위치로 옮긴다
+            googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+            //구글 맵에 표시할 마커에 대한 옵션 설정
+            MarkerOptions markerOptions = new MarkerOptions().position(latLng).title(CountryName[x]);
+            // 마커 생성
+            googleMap.addMarker(markerOptions);
+        }
+        // 카메라 줌 정도를 설정한다
+        googleMap.moveCamera(CameraUpdateFactory.zoomTo(0));
+        //마커 클릭 이벤트 추가
+        googleMap.setOnMarkerClickListener(this::OnMarkerClick);
+    }
+  </code></pre><br><br>
+  (2) 마커 클릭<br><br>
+  아래 코드로 마커 클릭 이벤트를 추가해 줍니다.<br>
+  <pre><code>
+    //마커 클릭 이벤트 추가
+        googleMap.setOnMarkerClickListener(this::OnMarkerClick);
+  </code></pre><br>
+  해당 앱에서는 나라별 마커 클릭시 다른 액티비티로 이어다. 다음 코드를 보면 알수 있습니다.
+  <pre><code>
+  //마커를 클릭할 시 발생할 내용을 해당 메소드 내부에 코딩
+  public boolean OnMarkerClick(Marker marker) {
+       
+        LatLng countryLocation = marker.getPosition();
+
+        //미국 마커 클릭시
+        //새로운 변수를 만들어줘 미국 좌표값을 대입
+        double lat0 = locationsdata[0][0];
+        double lon0 = locationsdata[0][1];
+        LatLng latLng0 = new LatLng(lat0, lon0);
+        //미국의 좌표값을 가져와 사용자가 클릭한 마커와 미국의 마커와 동일한 경우 미국의 UserInfo 액티비티가 열린다
+        if (countryLocation.equals(latLng0)) {
+            startActivity(new Intent(getApplicationContext(), UserInfo_0.class));
+        }
+        //동일한 방법으로 Locations 파일 내부 배열의 크기만큼 코드
+        //영국 마커 클릭시
+        double lat1 = locationsdata[1][0];
+        double lon1 = locationsdata[1][1];
+        LatLng latLng1 = new LatLng(lat1, lon1);
+
+        if (countryLocation.equals(latLng1)) {
+            startActivity(new Intent(getApplicationContext(), UserInfo_1.class));
+        }
+        //생략..
+        //일본 마커 클릭시
+        double lat13 = locationsdata[13][0];
+        double lon13 = locationsdata[13][1];
+        LatLng latLng13 = new LatLng(lat13, lon13);
+
+        if (countryLocation.equals(latLng13)) {
+            startActivity(new Intent(getApplicationContext(), UserInfo_13.class));
+        }
+
+        //대한민국 마커 클릭시
+        double lat14 = locationsdata[14][0];
+        double lon14 = locationsdata[14][1];
+        LatLng latLng14 = new LatLng(lat14, lon14);
+
+        if (countryLocation.equals(latLng14)) {
+            startActivity(new Intent(getApplicationContext(), UserInfo_14.class));
+        }
+
+        return false;
+    }
+  </code></pre><br><br>
++ UserInfo_number 액티비티<br><br>
+이번에는 UserInfo 액티비티 내부 코드와 기능에대해 알아보겠습니다.<br>
+UserInfo 액티비티는 리얼타임 데이터베이스에서 사용자들의 정보를 불러와 나라별로 리스트뷰를 만들기 위한 목적으로 생성해 주었습니다.<br>
+<img height = "300" width = "300" src = "https://user-images.githubusercontent.com/79949843/121343520-bfaf2480-c95d-11eb-8349-493de07fb33e.png"><br>
+Locations 자바파일에서 나라의 좌표값을 15개 지정해 주었기 때문에 15개의 액티비티를 생성해 주었고 많은 수의 파일을 관리하기 용이하기 위해<br>
+UserInfo_Number 라는 Package를 새로 만들어 해당 패키지 내부에 모든 액티비티를 저장하였습니다.<br>
+<img src = "https://user-images.githubusercontent.com/79949843/121344373-a9559880-c95e-11eb-949f-f35eebc23e05.png"><br>
+<img height = "500" width = "300" src = "https://user-images.githubusercontent.com/79949843/121344312-9642c880-c95e-11eb-8eb3-e00aefbd0cdc.png"><br>
+또한 layout파일의 수를 줄이기 위해 다음과 같이 ListView를 기반으로 하는 layout을 하나 만들어 준 뒤 모든 UserInfo 액티비티들이 해당 layout을 참조하게 하였습니다.<br><br>
+  (1) 리스트 뷰<br><br>
+  리스트뷰를 구성하는 코드들을 알아보겠습니다. 제일 먼저 ListView와 이를 연결해줄 ArrayAdepter를 선언해 줍니다.
+  <pre><code>
+  ListView dBListView;
+  ArrayAdapter<String> adapter;
+  </code></pre><br>
+  다음으로는 onCreate메소드 내부에도 다음과같이 변수를 선언해 주고, ListView와 ArrayAdepter 연결해 줍니다.
+  <pre><code>
+        dBListView=findViewById(R.id.DBListView);
+
+        adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1);
+                //simple_list_item_1은 안드로이드 스튜디오에서 제공해주는 가장 기본적은 ListView의 layout이다
+        dBListView.setAdapter(adapter);
+        getFirebaseDataBase();
+        //getFirebaseDataBase은 ListView의 내부 아이템들의 내용을 채워주는 메소드, 아래 설명 참고
+  </code></pre><br><br>
+  (2) item클릭<br><br>
+  리스트뷰를 구성했으니 내부에 있는 item에 클릭 메소드를 달아주겠습니다. 다음과 같은 코드를 추가해 주면 됩니다.
+  <pre><code>
+  dBListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                receiverName = userName.get(position);
+                receiverCountry = userCountry.get(position);
+                //몇번째 item을 클릭하였는지 position을 통해 알고, 클릭한 정보를 저장해준다
+                // 아래 나올내용과 관련이 많으니 기억해두자
+                showMessage();
+                //item 클릭시 발생하는 AlertDialog 구현 메소드, 아래 설명 참고
+
+            }
+        });
+  </code></pre><br><br>
++ 리얼 타임 데이터베이스<br><br>
+UserInfo 액티비티의 리스트뷰 내부 아이템들은 해당 국가에 포함된 유저들의 정보로 구성할 것이기 때문에 <br>
+리얼타임 데이터베이스에서 country값이 일치하는 유저들을 전부 불러와야 합니다.<br><br>
+  (1) 데이터 불러오기<br><br>
+  리얼타임 데이터베이스에서 정보를 불러오는 코드는 addValueEventListener가 있습니다.<br>
+  아까 위에서 말했던 getFirebaseDataBase() 메소드 내부의 코드를 보겠습니다.
+  <pre><code>
+  private void getFirebaseDataBase() {
+        //리얼타임 데이터베이스에서 정보를 불러오는 addValueEventListener
+        ValueEventListener eventListener = new ValueEventListener() {
+            @Override
+            //onDataChange 메소드는 리얼타임 데이터 베이스가 바뀔 때 마다 반응하는 비동기식 메소드 입니다.
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                userName.clear();
+                userCountry.clear();
+                arrayData.clear();
+                arrayIndex.clear();
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    String key=dataSnapshot.getKey();
+                    com.androidapp.youjigom.FirebasePost get=dataSnapshot.getValue(com.androidapp.youjigom.FirebasePost.class);
+                    String info[]={get.fullName, get.country};
+                    
+                    //해당 UserInfo 액티비티와 같은 country값을 가지는 유저들의만 정보를 불러옵니다.
+                    if(info[1].equals(CountryName[0])){
+                        String result = "사용자 이름 : " + info[0] + "\n국적 : " + info[1];
+                        //String result=info[2];
+                        arrayData.add(result);
+                        arrayIndex.add(key);
+                        userName.add(info[0]);
+                        userCountry.add(info[1]);
+                    }
+                }
+                adapter.clear();
+                adapter.addAll(arrayData);
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        };
+    }
+  </code></pre><br>
+  위 코드를 통해 데이터를 불러오고 해당 데이터를 배열에 저장 -> 어뎁터를 통해 리스트뷰에 출력 하는것을 볼 수 있습니다.<br>
+  그러나, 위 주석에서 언급한것처럼 onDataChange 메소드는 비동기식 메소드 이기 때문에 데이터가 바뀔때마다<br>
+  리얼타임 데이터베이스의 모든 정보가 배열 내부에 중첩이 될 수 있습니다. 그러므로 메소드가 실행되기 전에 배열들을 초기화 해주는 모습을 볼 수 있습니다.<br><br>
+  (2) 이미지 전송/ AlertDialog<br><br>
+  저희 앱의 주 기능인 사진전송은 item을 클릭 하였을 때 구현하였습니다.<br>
+  그러나, 앱을 사용하는 유저들이 잘못 눌렀을 경우를 방지하기위하여 item 클릭 이벤트에 <br>
+  dialog를 추가해 주어 사진을 정말 전송할 것인지 재차 물어는 기능을 구현하였습니다. 아래 코드는 item 클릭 시 AlertDialog 구현 코드 입니다.
+  <pre><code>
+  public void showMessage(){
+        // 다이올로그를 빌드해줄 변수를 선언합니다.
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("사진 교환");
+        builder.setMessage( receiverName + "님께 사진을 전송하시겠습니까?" );
+        //아이콘에 원하는 이미지 첨부
+        builder.setIcon(R.drawable.adialog);
+        //예를 클릭하였을 때
+        builder.setPositiveButton("예", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //FirePost 내부 리얼타임 데이터 베이스에 값을 저장해주는 메소드를 선언
+                Map<String, Object> childUpdates=new HashMap<>();
+                Map<String, Object> postValues=null;
+                //카메라 액티비티에서 이미지의 주소 선언
+                CameraActivity ca = new CameraActivity();
+                String StringImage=ca.getoriginalBm();
+
+                Register rg = new Register();
+                // 보내는 사용자의 이름
+                senderName = rg.getSenderName();
+
+                com.androidapp.youjigom.FirebasePost post=
+                        new com.androidapp.youjigom.FirebasePost
+                                (StringImage, receiverName, receiverCountry, senderName);
+                postValues=post.toMap();
+                // 위에서 클릭한 사용자의 리얼타임데이터베이스 child에 StringImage와 senderName 저장
+                childUpdates.put("users/" + receiverName, postValues);
+                databaseReference.updateChildren(childUpdates);
+            }
+        });
+        //아니요를 클릭하였을 때
+        builder.setNegativeButton("아니요", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+  </code></pre><br><br>
+  
+
 
 ## 2-4 카메라 실행<br>
 ### (1) 카메라, 앨범 실행<br><br>
