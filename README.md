@@ -857,40 +857,7 @@ SettingActivity.java, activity_setting.xml을 만듭니다. activity_setting.xml
                 android:layout_width="wrap_content"
                 android:layout_height="0.7dp"
                 android:layout_centerInParent="true"
-                android:background="#BBBBBB" />
-            <Button
-                android:id="@+id/setting2_btn"
-                android:layout_width="match_parent"
-                android:fontFamily="@font/cookierunblack"
-                android:layout_height="wrap_content"
-                android:background="@drawable/button_background"
-                android:gravity="center_vertical"
-                android:paddingLeft="8dp"
-                android:text="소리 설정"
-                android:textSize="16sp" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.7dp"
-                android:layout_centerInParent="true"
-                android:background="#BBBBBB" />
-            <Button
-                android:id="@+id/setting3_btn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/button_background"
-                android:gravity="center_vertical"
-                android:paddingLeft="8dp"
-                android:fontFamily="@font/cookierunblack"
-                android:text="알림 설정"
-                android:textSize="16sp" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.7dp"
-                android:layout_centerInParent="true"
-                android:background="#BBBBBB" />
-        </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+                android:background="#BBBBBB" />          
 </code></pre>
 
 
