@@ -750,6 +750,11 @@ reference.child("users/jjj").addValueEventListener(new ValueEventListener() {
 이미지가 저장되면 이벤트리스너 안에 코드가 실행되면서 senderName 필드에 저장된 값이 user에 저장되고 그 값을 items 배열에 추가해줍니다.<br><br>
 그 후 listView에 adapter를 연결해주면 리스트뷰에 로그인한 사용자가 받은 사진 목록이 뜨게 됩니다.<br>
 
+<img src="https://user-images.githubusercontent.com/79952145/121304250-12c1b100-c937-11eb-80ab-fba600f7ddad.png" width="400"><br>
+
+리스트뷰를 클릭하면 보낸 사람의 이름과 사진을 보여주는 image xml파일을 추가로 작성해줍니다.
+
+
 ## 2-7 환경설정<br>
 + 소개<br>
 + 시스템 설정으로 이동<br>
