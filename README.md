@@ -451,7 +451,7 @@ Realtime Database는 Firebase에서 제공하는 실시간 데이터베이스로
 이 앱에서는 회원가입한 사용자의 일부 정보를 저장하고, 전송된 이미지를 스트링 값으로 변환하여 저장하는 곳에 사용했습니다.<br><br><br><br><br><br><br><br><br>
 
 ### (2) 데이터 저장<br>
-<b>1. 회원가입한 사용자의 정보 중 이름과 국가 정보 저장<br></b><br>
+<b>회원가입한 사용자의 정보 중 이름과 국가 정보 저장<br></b><br>
 각 데이터를 저장하기 위해서 FirebasePost 자바 파일을 만들어 그 안에 필요한 변수들과 함수를 작성해줍니다.<br>
 
   <pre><code>
@@ -507,12 +507,7 @@ toMap 함수는 Realtime Database에 값을 저장하기 위해 HashMap 형식�
    
 앱을 실행하여 회원가입을 해보면 image와 senderName값은 널값이므로 들어가지 않고 나머지 부분을 잘 저장된 것을 확인할 수 있습니다.<br>
 <img src="https://user-images.githubusercontent.com/79952145/121284733-48a36d00-c918-11eb-98b1-0755e825b56a.png"><br>
-
-<b>2. 이미지 전송시, 이미지를 스트링 값으로 변환하여 저장<br></b><br>
 이미지 전송도 마찬가지로 FirebasePost 파일의 toMap 함수를 이용하여 정보를 데이터베이스에 저장합니다.<br>
-<b>jiminjimin</b> 이라는 사용자로 로그인하고 <b>jjj</b>라는 사용자에게 사진을 보내면 데이터베이스에 다음과 같이 저장됨을 확인할 수 있습니다.<br>
-<img src="https://user-images.githubusercontent.com/79952145/121299077-d3439680-c92f-11eb-9465-0faaa6930fbb.png"><br>
-이미지는 받는 사람의 정보 안에 보내는 사람의 이름과 함께 추가로 저장됩니다.<br>
 
 + 데이터 불러오기<br>
 
@@ -676,6 +671,9 @@ public static String BitmapToString(Bitmap bitmap) {
 </pre></code>
 
 + 이미지값 데이터 베이스에 저장<br>
+<b>jiminjimin</b> 이라는 사용자로 로그인하고 <b>jjj</b>라는 사용자에게 사진을 보내면 데이터베이스에 다음과 같이 저장됨을 확인할 수 있습니다.<br>
+<img src="https://user-images.githubusercontent.com/79952145/121299077-d3439680-c92f-11eb-9465-0faaa6930fbb.png"><br>
+이미지는 받는 사람의 정보 안에 보내는 사람의 이름과 함께 추가로 저장됩니다.<br>
 
 ## 2-6 환경설정<br>
 + 소개<br>
