@@ -713,7 +713,7 @@ builder.setPositiveButton("예", new DialogInterface.OnClickListener() {
 <b>jiminjimin</b> 이라는 사용자로 로그인하고 <b>jjj</b>라는 사용자에게 사진을 보내면 데이터베이스에 다음과 같이 저장됨을 확인할 수 있습니다.<br>
 
 <img src="https://user-images.githubusercontent.com/79952145/121300841-51a13800-c932-11eb-832b-cffec188e183.png" width="400"><br>
-이미지는 받는 사람의 정보 안에 보내는 사람의 이름과 함께 추가로 저장됩니다.<br>
+이미지는 받는 사람의 정보 안에 보내는 사람의 이름과 함께 추가로 저장됩니다.<br><br>
 
 ## 2-6 전송된 이미지 확인<br>
 전송된 이미지를 확인하기 위해 imgList 자바파일과 xml파일을 만들어주고 xml파일에는 listView만 배치해줍니다.<br>
@@ -784,7 +784,44 @@ adapter는 CusteomAdapter함수를 따로 만들어서 사용해야합니다.<br
 리스트뷰를 클릭하면 보낸 사람의 이름과 사진을 보여주는 image.xml파일을 추가로 작성해줍니다.<br><br>
 image.xml 파일에는 사진을 불러올 imageView와 보내는 사람의 이름을 표시해줄 TextView만 배치해줍니다.<br>
 
+<pre><code>
+//listView를 클릭하면 일어나는 이벤트 처리입니다.
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                setContentView(R.layout.image);
 
+                TextView txtNameGet = findViewById(R.id.txtNameGet);
+                ImageView imgGet = findViewById(R.id.imgGet);
+</pre></code>
+
+listView의 클릭 이벤트리스너에서 TextView와 ImageView를 선언해줍니다.<br>
+
+<pre><code>
+              reference.child("users/jjj").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                            if (dataSnapshot.getKey().equals("image")){
+                                //스트링 값으로 저장된 이미지를 가져와 image변수에 저장합니다.
+                                image = dataSnapshot.getValue().toString();
+
+                                byte[] b = Base64.decode(image, Base64.DEFAULT);
+
+                                bitmap = BitmapFactory.decodeByteArray(b, 0, b.length);
+                                Log.d("TAG","bitmap: "+bitmap);
+                                //image변수에 저장된 스트링 값을 바이트 배열로 바꾸고 비트맵으로 변환하여 이미지뷰에 띄워줍니다.
+                                imgGet.setImageBitmap(bitmap);
+                            }
+                        }
+                    }
+                    
+                    //받는 사람이름을 텍스트뷰에 띄워줍니다.
+                    txtNameGet.setText(user);
+</pre></code>
+
+지정된 경로에서 image 필드 안에 저장된 이미지의 스트링 값을 image 변수에 저장한 후 그것을 byte배열로 바꾸고 bitmap으로 바꾼 후, Imageview에 띄워줍니다.<br>
+TextView에는 위에서 user 변수안에 저장해두었던 보내는 사람 이름을 띄워줍니다.<br><br>
 
 ## 2-7 환경설정<br>
 + 소개<br>
