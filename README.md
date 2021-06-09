@@ -26,7 +26,7 @@
 ### 2-6 전송된 이미지 확인<br>
 ### 2-7 환경설정<br>
 + 소개<br>
-+ 시스템 설정으로 이동<br>
++ 환경설정 구성<br>
 ## 3. 동작영상<br><br><br>
   
 # 1. 앱 소개<br>
@@ -529,7 +529,7 @@ toMap 함수는 Realtime Database에 값을 저장하기 위해 HashMap 형식�
 앱을 실행하여 회원가입을 해보면 image와 senderName값은 널값이므로 들어가지 않고 나머지 부분을 잘 저장된 것을 확인할 수 있습니다.<br>
 <img src="https://user-images.githubusercontent.com/79952145/121284733-48a36d00-c918-11eb-98b1-0755e825b56a.png"><br>
 
-+ 데이터 불러오기<br>
+### (3) 데이터 불러오기<br>
 
 ## 2-3 구글맵<br>
 + 소개<br>
