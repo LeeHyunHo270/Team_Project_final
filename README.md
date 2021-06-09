@@ -820,8 +820,11 @@ listView의 클릭 이벤트리스너에서 TextView와 ImageView를 선언해�
                     txtNameGet.setText(user);
 </pre></code>
 
-지정된 경로에서 image 필드 안에 저장된 이미지의 스트링 값을 image 변수에 저장한 후 그것을 byte배열로 바꾸고 bitmap으로 바꾼 후, Imageview에 띄워줍니다.<br>
-TextView에는 위에서 user 변수안에 저장해두었던 보내는 사람 이름을 띄워줍니다.<br><br>
+지정된 경로에서 image 필드 안에 저장된 이미지의 스트링 값을 image 변수에 저장한 후 그것을 byte배열로 바꾸고 bitmap으로 바꾼 후, Imageview에 띄워줍니다.<br><br>
+TextView에는 위에서 user 변수안에 저장해두었던 보낸 사람 이름을 띄워줍니다.<br><br>
+확인하면 다음과 같이 보낸 사람과 이미지를 잘 띄워주는 것을 확인할 수 있습니다.
+
+<img src="https://user-images.githubusercontent.com/79952145/121306240-8cf33500-c939-11eb-9888-f3a0efa9d6b8.png" height="200"><br>
 
 ## 2-7 환경설정<br>
 + 소개<br>
