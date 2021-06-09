@@ -22,7 +22,8 @@
 ### 2-5 이미지 저장 및 전송<br>
 + 이미지값 변환<br>
 + 이미지값 데이터 베이스에 저장<br>
-### 2-6 환경설정<br>
+### 2-6 전송된 이미지 확인<br>
+### 2-7 환경설정<br>
 + 소개<br>
 + 시스템 설정으로 이동<br>
 ## 3. 동작영상<br><br><br>
@@ -714,7 +715,9 @@ builder.setPositiveButton("예", new DialogInterface.OnClickListener() {
 <img src="https://user-images.githubusercontent.com/79952145/121300841-51a13800-c932-11eb-832b-cffec188e183.png" width="400"><br>
 이미지는 받는 사람의 정보 안에 보내는 사람의 이름과 함께 추가로 저장됩니다.<br>
 
-## 2-6 환경설정<br>
+## 2-6 전송된 이미지 확인<br>
+
+## 2-7 환경설정<br>
 + 소개<br>
 + 시스템 설정으로 이동<br>
 
