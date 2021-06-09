@@ -716,6 +716,13 @@ builder.setPositiveButton("예", new DialogInterface.OnClickListener() {
 이미지는 받는 사람의 정보 안에 보내는 사람의 이름과 함께 추가로 저장됩니다.<br>
 
 ## 2-6 전송된 이미지 확인<br>
+전송된 이미지를 확인하기 위해 imgList 자바파일과 xml파일을 만들어주고 xml파일에는 listView만 배치해줍니다.<br>
+
+<pre><code>
+ListView listView = findViewById(R.id.listView); //받은 사진 목록을 보여주는 listView 입니다.
+ArrayList<String> items = new ArrayList<>(); //사진을 보낸 사람의 이름을 저장할 items라는 ArrayList를 만들어줍니다.
+adapter = new CustomAdapter(this, 0, items);
+</pre></code>
 
 ## 2-7 환경설정<br>
 + 소개<br>
