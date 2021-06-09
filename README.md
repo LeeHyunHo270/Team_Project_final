@@ -669,7 +669,7 @@ public static String BitmapToString(Bitmap bitmap) {
     }
 </pre></code>
 
-+ 이미지값 데이터 베이스에 저장<br>
+### (2) 이미지값 데이터 베이스에 저장<br><br>
 
 <pre><code>
 public void showMessage(){
