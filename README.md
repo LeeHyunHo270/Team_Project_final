@@ -680,8 +680,9 @@ public void showMessage(){
         builder.setIcon(R.drawable.adialog);
 </pre></code>
 
-리스트뷰에서 사진을 전송할 대상을 선택하고 위의 코드로 작성된 알림창이 뜨게 됩니다.<br>
-<img src="https://user-images.githubusercontent.com/79952145/121300455-d2abff80-c931-11eb-95d2-b8bb4905bfd1.png"><br>
+리스트뷰에서 사진을 전송할 대상을 선택하고 위의 코드로 작성된 알림창이 뜨게 됩니다.<br><br>
+
+<img src="https://user-images.githubusercontent.com/79952145/121300607-07b85200-c932-11eb-8ce0-9c18a2e8dd9c.png"><br>
 
 <pre><code>
 builder.setPositiveButton("예", new DialogInterface.OnClickListener() {
