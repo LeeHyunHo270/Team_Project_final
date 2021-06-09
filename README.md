@@ -54,7 +54,7 @@
 ## 1-3 차별점<br>
 
 # 2. 기능구현<br>
-## 2-1 파이어베이스<br>
+## 2-1 파이어베이스 - <br>
 ### (1) 소개
   
 Firebase 에서 제공하는 서비스를 이용해 사용자를 식별할수 있는 ID / Passwrod 생성과 앱 활용에 필요한
@@ -465,7 +465,7 @@ public void logout(View view) {
     
 
 
-## 2-2 리얼타임 데이터베이스
+## 2-2 리얼타임 데이터베이스 - 
 ### (1) 소개<br>
 <img src="https://user-images.githubusercontent.com/79952145/121284977-961fda00-c918-11eb-9c80-2c9bc1e5b664.png" align="left" height="300">
 Realtime Database는 Firebase에서 제공하는 실시간 데이터베이스로 데이터 저장 및 동기화가 실시간으로 가능한 데이터베이스입니다. <br><br>
@@ -529,7 +529,7 @@ toMap 함수는 Realtime Database에 값을 저장하기 위해 HashMap 형식�
 앱을 실행하여 회원가입을 해보면 image와 senderName값은 널값이므로 들어가지 않고 나머지 부분을 잘 저장된 것을 확인할 수 있습니다.<br>
 <img src="https://user-images.githubusercontent.com/79952145/121284733-48a36d00-c918-11eb-98b1-0755e825b56a.png"><br>
 
-## 2-3 구글맵<br><br>
+## 2-3 구글맵 - 안준영<br><br>
 + 소개<br><br>
 <img width="300" src="https://user-images.githubusercontent.com/79949843/121337394-75c34000-c957-11eb-80d8-c24e6a759611.png"><img src="https://user-images.githubusercontent.com/79949843/121337659-bb800880-c957-11eb-9372-46229a914003.png"><br>
 저희 조는 구글맵을 이용하여 다양한 사용자들과의 접근을 쉽게하고, <br>
@@ -837,7 +837,7 @@ UserInfo 액티비티의 리스트뷰 내부 아이템들은 해당 국가에 �
   
 
 
-## 2-4 카메라 실행<br>
+## 2-4 카메라 실행 - <br>
 ### (1) 카메라, 앨범 실행<br><br>
 
 TedPermision()을 이용하여 CameraActivity 실행시 카메라 사용과 저장소 접근에 대한 서용 권한 체크 창을 띄우고 Gallery 버튼과 Camera 버튼 클릭 시 권한이 허락 되어 있다면 각 버튼의 이름에 맞는 함수를 호출하도록 했습니다.
@@ -1148,7 +1148,7 @@ TextView에는 위에서 user 변수안에 저장해두었던 보낸 사람 이�
 
 <img src="https://user-images.githubusercontent.com/79952145/121306240-8cf33500-c939-11eb-9888-f3a0efa9d6b8.png" height="200"><br>
 
-## 2-7 환경설정<br>
+## 2-7 환경설정 - 윤효묵<br>
 ### (1) 소개<br>
 환경설정은 언어 설정, 소리 설정, 알림 설정의 3가지 버튼으로 이루어져 있으며, 각각의 버튼 클릭시 핸드폰에 내재되어있는 시스템 설정으로 들어가게 해줍니다. 시스템 설정에서 언어, 소리, 알림 기능을 수정할 수 있습니다.<br>
 ### (2) 환경설정 구성<br>
