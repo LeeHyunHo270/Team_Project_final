@@ -710,7 +710,8 @@ builder.setPositiveButton("예", new DialogInterface.OnClickListener() {
 "예"버튼의 onClick 함수 안에 이미지 저장 코드를 작성합니다. 이미지 전송도 회원가입시 사용자 정보를 저장할 때처럼 FirebasePost 파일의 toMap 함수를 이용했습니다.<br>
 
 <b>jiminjimin</b> 이라는 사용자로 로그인하고 <b>jjj</b>라는 사용자에게 사진을 보내면 데이터베이스에 다음과 같이 저장됨을 확인할 수 있습니다.<br>
-<img src="https://user-images.githubusercontent.com/79952145/121299077-d3439680-c92f-11eb-9465-0faaa6930fbb.png"><br>
+
+<img src="https://user-images.githubusercontent.com/79952145/121300841-51a13800-c932-11eb-832b-cffec188e183.png"><br>
 이미지는 받는 사람의 정보 안에 보내는 사람의 이름과 함께 추가로 저장됩니다.<br>
 
 ## 2-6 환경설정<br>
