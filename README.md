@@ -750,6 +750,35 @@ reference.child("users/jjj").addValueEventListener(new ValueEventListener() {
 이미지가 저장되면 이벤트리스너 안에 코드가 실행되면서 senderName 필드에 저장된 값이 user에 저장되고 그 값을 items 배열에 추가해줍니다.<br><br>
 그 후 listView에 adapter를 연결해주면 리스트뷰에 로그인한 사용자가 받은 사진 목록이 뜨게 됩니다.<br>
 
+<pre><code>
+public class CustomAdapter extends ArrayAdapter<String> {
+        private ArrayList<String> items;
+
+        public CustomAdapter(Context context, int textViewResourceId, ArrayList<String> objects){
+            super(context, textViewResourceId, objects);
+            this.items = objects;
+        }
+
+        public View getView(int position, View convertView, ViewGroup parent){
+            View v = convertView;
+            if (v == null){
+                LayoutInflater vi = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                v = vi.inflate(R.layout.item, null);
+            }
+
+            TextView txtName = (TextView)v.findViewById(R.id.txtName);
+
+            if (user.equals(items.get(position))) {
+                txtName.setText(items.get(position));
+            }
+            return v;
+        }
+    }
+</pre></code>
+
+adapter는 CusteomAdapter함수를 따로 만들어서 사용해야합니다.<br>
+리스트뷰에 목록을 띄워줄때 사용할 item.xml파일을 하나 더 작성해주고 getView 함수에서 item.xml파일과 adapter를 연결해주면 이미지 목록이 성공적으로 뜹니다.
+
 <img src="https://user-images.githubusercontent.com/79952145/121304250-12c1b100-c937-11eb-80ab-fba600f7ddad.png" width="400"><br>
 
 리스트뷰를 클릭하면 보낸 사람의 이름과 사진을 보여주는 image xml파일을 추가로 작성해줍니다.
