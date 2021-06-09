@@ -776,12 +776,14 @@ public class CustomAdapter extends ArrayAdapter<String> {
     }
 </pre></code>
 
-adapter는 CusteomAdapter함수를 따로 만들어서 사용해야합니다.<br>
+adapter는 CusteomAdapter함수를 따로 만들어서 사용해야합니다.<br><br>
 리스트뷰에 목록을 띄워줄때 사용할 item.xml파일을 하나 더 작성해주고 getView 함수에서 item.xml파일과 adapter를 연결해주면 이미지 목록이 성공적으로 뜹니다.
 
 <img src="https://user-images.githubusercontent.com/79952145/121304250-12c1b100-c937-11eb-80ab-fba600f7ddad.png" width="400"><br>
 
-리스트뷰를 클릭하면 보낸 사람의 이름과 사진을 보여주는 image xml파일을 추가로 작성해줍니다.
+리스트뷰를 클릭하면 보낸 사람의 이름과 사진을 보여주는 image.xml파일을 추가로 작성해줍니다.<br><br>
+image.xml 파일에는 사진을 불러올 imageView와 보내는 사람의 이름을 표시해줄 TextView만 배치해줍니다.<br>
+
 
 
 ## 2-7 환경설정<br>
