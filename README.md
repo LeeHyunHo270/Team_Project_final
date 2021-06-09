@@ -722,7 +722,33 @@ builder.setPositiveButton("예", new DialogInterface.OnClickListener() {
 ListView listView = findViewById(R.id.listView); //받은 사진 목록을 보여주는 listView 입니다.
 ArrayList<String> items = new ArrayList<>(); //사진을 보낸 사람의 이름을 저장할 items라는 ArrayList를 만들어줍니다.
 adapter = new CustomAdapter(this, 0, items);
+
+fDatabase = FirebaseDatabase.getInstance();
+DatabaseReference reference = fDatabase.getReference();
 </pre></code>
+
+필요한 변수를 선언해준 후, 이미지가 저장될 경로에 이벤트리스너를 달아줍니다.<br>
+
+<pre><code>
+reference.child("users/jjj").addValueEventListener(new ValueEventListener() {
+            //지정된 경로에 이미지가 저장되면 이벤트리스너가 실행됩니다.
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    if (dataSnapshot.getKey().equals("senderName")){
+                        //로그인한 사용자의 이름을 뽑아 user 변수에 저장 후, items에 추가해줍니다.
+                        user = dataSnapshot.getValue().toString();
+                        items.add(user);
+                        Log.d("TAG","items: "+user);
+                        //listView에 adapter를 연결해줍니다.
+                        listView.setAdapter(adapter);
+                    }
+                }
+            }
+</pre></code>
+
+이미지가 저장되면 이벤트리스너 안에 코드가 실행되면서 senderName 필드에 저장된 값이 user에 저장되고 그 값을 items 배열에 추가해줍니다.<br><br>
+그 후 listView에 adapter를 연결해주면 리스트뷰에 로그인한 사용자가 받은 사진 목록이 뜨게 됩니다.<br>
 
 ## 2-7 환경설정<br>
 + 소개<br>
