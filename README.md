@@ -827,7 +827,6 @@ TextView에는 위에서 user 변수안에 저장해두었던 보낸 사람 이�
 <img src="https://user-images.githubusercontent.com/79952145/121306240-8cf33500-c939-11eb-9888-f3a0efa9d6b8.png" height="200"><br>
 
 ## 2-7 환경설정<br>
-+ 소개<br>
-+ 시스템 설정으로 이동<br>
+
 
 # 3. 동작영상<br>
