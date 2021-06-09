@@ -909,3 +909,5 @@ buttonSetting3.setOnClickListener(new View.OnClickListener() {
 
 
 # 3. 동작영상<br>
+#### 위에 적은 내용들을 좀 더 이해하기 쉽게 ppt와 실제 구현 모습을 통해 동작영상을 만들었습니다.
+(동작영상 : )
