@@ -711,7 +711,7 @@ builder.setPositiveButton("예", new DialogInterface.OnClickListener() {
 
 <b>jiminjimin</b> 이라는 사용자로 로그인하고 <b>jjj</b>라는 사용자에게 사진을 보내면 데이터베이스에 다음과 같이 저장됨을 확인할 수 있습니다.<br>
 
-<img src="https://user-images.githubusercontent.com/79952145/121300841-51a13800-c932-11eb-832b-cffec188e183.png" width="400><br>
+<img src="https://user-images.githubusercontent.com/79952145/121300841-51a13800-c932-11eb-832b-cffec188e183.png" width="400"><br>
 이미지는 받는 사람의 정보 안에 보내는 사람의 이름과 함께 추가로 저장됩니다.<br>
 
 ## 2-6 환경설정<br>
