@@ -486,7 +486,7 @@ toMap 함수는 Realtime Database에 값을 저장하기 위해 HashMap 형식�
     }
    </code></pre>
    
-회원가입을 하면 정보들이 데이터베이스에 저장되도록 회원가입 버튼에 onClick리스너 안에 데이터 저장 코드를 작성해줍니다.<br>
+회원가입을 하면 정보들이 데이터베이스에 저장되도록 회원가입 버튼의 onClick리스너 안에 데이터 저장 코드를 작성해줍니다.<br>
 <pre><code>
    fDatabase = FirebaseDatabase.getInstance();
    DatabaseReference reference = fDatabase.getReference();
